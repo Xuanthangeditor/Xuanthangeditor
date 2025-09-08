@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Gallery</title>
+  <link rel="stylesheet" href="./assets/css/video.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Right Side -->
+    <div class="rightside">
+      <div class="rightside__box">
+        <div class="rightside__avatar">
+          <img src="./assets/img/about.jpg" alt="">
+        </div>
+        <div class="rightside__name">
+          <h1>Xuân Thắng</h1>
+        </div>
+        <div class="rightside__description">
+          <h1>Graphic Designer</h1>
+        </div>
+        <div class="rightside__local">
+          Hải Châu, Tp Đà Nẵng
+        </div>
+        <a href="./index.html" class="btn">Trang Chủ</a>
+        <a href="https://www.behance.net/xuanthang1437" class="btn" target="_blank">Behance</a>
+        <a href="https://www.facebook.com/xuanthang1437/" class="btn" target="_blank">Facebook</a>
+      </div>
+    </div>
+
+    <!-- Left Side -->
+    <div class="leftside">
+      <div class="gallery">
+        <div class="work__img"><video src="./assets/video/1.mp4"></video></div>
+        <div class="work__img"><video src="./assets/video/2.mp4"></video></div>
+        <div class="work__img"><video src="./assets/video/3.mp4"></video></div>
+        <div class="work__img"><video src="./assets/video/4.mp4"></video></div>
+        <div class="work__img"><video src="./assets/video/5.mp4"></video></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup-video">
+    <span class="close">&times;</span>
+    <div class="nav-btn prev">&#10094;</div>
+    <video src="" controls></video>
+    <div class="nav-btn next">&#10095;</div>
+  </div>
+
+  <script>
+    const popup = document.querySelector('.popup-video');
+    const popupVideo = popup.querySelector('video');
+    const closeBtn = popup.querySelector('.close');
+    const prevBtn = popup.querySelector('.prev');
+    const nextBtn = popup.querySelector('.next');
+    const videos = Array.from(document.querySelectorAll('.gallery video'));
+    let currentIndex = -1;
+
+    function openPopup(index) {
+      currentIndex = index;
+      const src = videos[index].getAttribute('src');
+      popup.style.display = 'flex';
+      popupVideo.src = src;
+      popupVideo.play();
+      videos.forEach(v => v.pause()); // pause all thumbnail videos
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+      popupVideo.pause();
+      popupVideo.src = "";
+    }
+
+    function showNext() {
+      let nextIndex = (currentIndex + 1) % videos.length;
+      openPopup(nextIndex);
+    }
+
+    function showPrev() {
+      let prevIndex = (currentIndex - 1 + videos.length) % videos.length;
+      openPopup(prevIndex);
+    }
+
+    videos.forEach((vid, i) => {
+      vid.addEventListener("click", () => openPopup(i));
+    });
+
+    closeBtn.addEventListener("click", closePopup);
+    nextBtn.addEventListener("click", showNext);
+    prevBtn.addEventListener("click", showPrev);
+
+    window.addEventListener("keydown", (e) => {
+      if (popup.style.display === "flex") {
+        if (e.key === "Escape") closePopup();
+        if (e.key === "ArrowRight") showNext();
+        if (e.key === "ArrowLeft") showPrev();
+      }
+    });
+  </script>
+</body>
+</html>

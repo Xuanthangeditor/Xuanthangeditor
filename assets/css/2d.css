@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Button */
+.btn {
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 12px 18px;
+  background-color: #0401c0;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #003ecb;
+}
+
+/* Container */
+.container {
+  background-color: #0b111e;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 50px;
+  padding: 50px 8%;
+}
+
+/* Right Side */
+.rightside {
+  position: relative;
+  box-shadow: 0 1px 3px rgba(80, 80, 80, 0.3);
+  height: auto;
+}
+
+.rightside__box {
+  width: 100%;
+  background-color: #373838;
+  border-radius: 3px;
+  font-size: 12px;
+  padding-bottom: 26px;
+}
+
+.rightside__container {
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 15.6px;
+  text-align: center;
+  padding: 25px 30px 16px;
+}
+
+.rightside__avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
+
+.rightside__avatar img {
+  border-radius: 50%;
+}
+
+.rightside__name h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.rightside__description h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.home,
+.contact__btn {
+  margin: 20px;
+  background-color: #0057ff;
+  text-align: center;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.home:hover,
+.contact__btn:hover {
+  background-color: #003ecb;
+}
+
+.home a,
+.contact__btn a {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.home__icon,
+.contact__icon {
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+.rightside__des {
+  margin: 20px;
+}
+
+.rightside__title {
+  color: white;
+  font-size: 16px;
+}
+
+/* Liên Lạc */
+.rightside__des {
+  margin: 20px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.rightside__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.des__box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.des__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: #2b2b2b;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.des__item i {
+  font-size: 18px;
+  color: #003ecb; /* icon xanh dương */
+  min-width: 22px;
+  text-align: center;
+}
+
+.des__item span,
+.des__item a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.des__item:hover {
+  background: #3a3a3a;
+}
+
+.des__item:hover i,
+.des__item:hover span,
+.des__item:hover a {
+  color: #ffcc33; /* hover vàng */
+}
+
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cột */
+  gap: 20px;
+}
+
+.gallery .work__img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* khung vuông */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111; /* fallback nền */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery .work__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fit đầy khung */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery .work__img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.gallery .work__img:hover img {
+  transform: scale(1.08); /* zoom ảnh khi hover */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr; /* mobile: 1 cột */
+  }
+}
+.des__item a:first-child i {
+  font-size: 18px;
+  color: #4fc3f7;
+  min-width: 22px;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+.des__item a {
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.des__item:hover {
+  background: #3a3a3a;
+}
+
+.des__item:hover a,
+.des__item:hover i,
+.des__item:hover span {
+  color: #ffcc33;
+}
+/* Tuỳ chỉnh nút close của Lightbox */
+.lb-close {
+  position: absolute !important;
+  top: 20px !important;
+  right: 30px !important;
+  font-size: 40px !important;
+  color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  transition: color 0.3s ease;
+}
+
+.lb-close:hover {
+  color: #ffcc33 !important;
+}
